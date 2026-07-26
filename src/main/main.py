@@ -41,7 +41,7 @@ def main():
     write_ordered_calls(os.path.join(_RESOURCES_DIR, 'orderedCalls.csv'))
 
     # Helper method that prints the contents of the users and callLogs tables. Uncomment to see data.
-    # select_from_users_and_call_logs()
+    select_from_users_and_call_logs()
 
     # Close the cursor and connection. main function ends here.
     cursor.close()
@@ -52,7 +52,7 @@ def main():
 
 # Helper for cleaning tables, returns True if field count is correct and none of the fields are empty
 def isClean(r: list, field_count: int) -> bool:
-    return len(r) == field_count and not any([len(i) == 0 for i in r])
+    return len(r) == field_count and not any([len(i.strip()) == 0 for i in r])
 
 # This function will load the users.csv file into the users table, discarding any records with incomplete data
 def load_and_clean_users(file_path):
