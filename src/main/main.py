@@ -95,6 +95,7 @@ def write_user_analytics(csv_file_path):
 
     with open(csv_file_path, 'w') as f:
         writer = csv.writer(f)
+        writer.writerow(['userId', 'avgDuration', 'numCalls'])
         writer.writerows(rows)
 
 # This function will write the callLogs ordered by userId, then start time.
