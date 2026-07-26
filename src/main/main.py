@@ -58,6 +58,7 @@ def isClean(r: list, field_count: int) -> bool:
 def load_and_clean_users(file_path):
     with open(file_path) as f:
         reader = csv.reader(f)
+        next(reader, None)
         for row in reader:
             if isClean(row, 2):
                 cursor.execute(f'''
@@ -71,6 +72,7 @@ def load_and_clean_users(file_path):
 def load_and_clean_call_logs(file_path):
     with open(file_path) as f:
         reader = csv.reader(f)
+        next(reader, None)
         for row in reader:
             if isClean(row, 5):
                 cursor.execute('''
